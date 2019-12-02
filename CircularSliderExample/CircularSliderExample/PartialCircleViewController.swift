@@ -21,7 +21,7 @@ class PartialCircleViewController: UIViewController {
     let circularSlider = CircularSlider(frame: frame)
     
     // setup target to watch for value change
-    circularSlider.addTarget(self, action: #selector(PartialCircleViewController.valueChanged(_:)), for: UIControlEvents.valueChanged)
+    circularSlider.addTarget(self, action: #selector(PartialCircleViewController.valueChanged(_:)), for: UIControl.Event.valueChanged)
     
     // NOTE: sliderMaximumAngle must be set before currentValue
     circularSlider.maximumAngle = 270.0
@@ -37,7 +37,7 @@ class PartialCircleViewController: UIViewController {
     circularSlider.transform = circularSlider.getRotationalTransform()
   }
   
-  func valueChanged(_ slider: CircularSlider) {
+  @objc func valueChanged(_ slider: CircularSlider) {
     sliderValueLabel.text = "\(slider.currentValue)"
   }
 }

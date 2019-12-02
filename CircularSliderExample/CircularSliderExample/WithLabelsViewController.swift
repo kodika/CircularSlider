@@ -21,7 +21,7 @@ class WithLabelsViewController: UIViewController {
     let circularSlider = CircularSlider(frame: frame)
     
     // setup target to watch for value change
-    circularSlider.addTarget(self, action: #selector(WithLabelsViewController.valueChanged(_:)), for: UIControlEvents.valueChanged)
+    circularSlider.addTarget(self, action: #selector(WithLabelsViewController.valueChanged(_:)), for: UIControl.Event.valueChanged)
     
     // setup slider defaults
     circularSlider.maximumAngle = 270.0
@@ -40,7 +40,7 @@ class WithLabelsViewController: UIViewController {
     circularSlider.transform = circularSlider.getRotationalTransform()
   }
   
-  func valueChanged(_ slider: CircularSlider) {
+  @objc func valueChanged(_ slider: CircularSlider) {
     sliderValue.text = "\(slider.currentValue)"
   }
 }
