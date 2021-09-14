@@ -8,14 +8,14 @@
 import UIKit
 import Foundation
 
-class DoubleHandleCircularSlider: CircularSlider {
+public class DoubleHandleCircularSlider: CircularSlider {
   let secondCircularSliderHandle = CircularSliderHandle()
   
   // the minimum distance, in degrees, allowed between handles
-  var minimumHandleDistance: CGFloat = 10
+  public var minimumHandleDistance: CGFloat = 10
   
   // the current value of the upper handle of the slider
-  var upperCurrentValue: Float {
+    public var upperCurrentValue: Float {
     set {
       assert(newValue <= maximumValue && newValue >= minimumValue, "current value \(newValue) must be between minimumValue \(minimumValue) and maximumValue \(maximumValue)")
       // Update the upperAngleFromNorth to match this newly set value
@@ -33,7 +33,7 @@ class DoubleHandleCircularSlider: CircularSlider {
   }
   
   // MARK: - Drawing Methods
-  override func draw(_ rect: CGRect) {
+  public override func draw(_ rect: CGRect) {
     super.draw(rect)
     let ctx = UIGraphicsGetCurrentContext()
     
@@ -42,7 +42,7 @@ class DoubleHandleCircularSlider: CircularSlider {
     secondCircularSliderHandle.frame = super.drawHandle(ctx!, atPoint: handleCenter)
   }
   
-  override func drawLine(_ ctx: CGContext) {
+  public override func drawLine(_ ctx: CGContext) {
     unfilledColor.set()
     // Draw an unfilled circle (this shows what can be filled)
     CircularTrig.drawUnfilledCircleInContext(ctx, center: centerPoint, radius: computedRadius, lineWidth: CGFloat(lineWidth), maximumAngle: maximumAngle, lineCap: unfilledArcLineCap)
@@ -53,7 +53,7 @@ class DoubleHandleCircularSlider: CircularSlider {
   }
   
   // MARK: - UIControl Functions
-  override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
+  public override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
     let location = touch.location(in: self)
 
     if pointInsideHandle(pointOnCircleAtAngleFromNorth(angleFromNorth), point: location, withEvent: event!) {
@@ -65,7 +65,7 @@ class DoubleHandleCircularSlider: CircularSlider {
     return secondCircularSliderHandle.highlighted || circularSliderHandle.highlighted
   }
   
-  override func continueTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
+  public override func continueTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
     
     let lastPoint = touch.location(in: self)
     let lastAngle = floor(CircularTrig.angleRelativeToNorthFromPoint(centerPoint, toPoint: lastPoint))
@@ -81,7 +81,7 @@ class DoubleHandleCircularSlider: CircularSlider {
     return true
   }
   
-  override func endTracking(_ touch: UITouch?, with event: UIEvent?) {
+  public override func endTracking(_ touch: UITouch?, with event: UIEvent?) {
     circularSliderHandle.highlighted = false
     secondCircularSliderHandle.highlighted = false
   }

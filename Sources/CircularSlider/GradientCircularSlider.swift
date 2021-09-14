@@ -7,15 +7,15 @@
 
 import UIKit
 
-class GradientCircularSlider: CircularSlider {
+public class GradientCircularSlider: CircularSlider {
   // Array with two colors to create gradation between
-  var unfilledGradientColors: [UIColor] = [.black, .lightGray] {
+  public var unfilledGradientColors: [UIColor] = [.black, .lightGray] {
     didSet {
       setNeedsDisplay()
     }
   }
   
-  override func drawLine(_ ctx: CGContext) {
+  public override func drawLine(_ ctx: CGContext) {
     if unfilledGradientColors.count == 2 {
       CircularTrig.drawUnfilledGradientArcInContext(ctx, center: centerPoint, radius: computedRadius, lineWidth: CGFloat(lineWidth), maximumAngle: maximumAngle , colors: unfilledGradientColors, lineCap: unfilledArcLineCap)
     } else {

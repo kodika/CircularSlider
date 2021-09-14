@@ -7,6 +7,6 @@
 
 import UIKit
 
-class CircularSliderHandle: CALayer {
-  var highlighted = false
+public class CircularSliderHandle: CALayer {
+  public var highlighted = false
 }
