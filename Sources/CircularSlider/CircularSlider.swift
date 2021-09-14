@@ -16,6 +16,8 @@ public enum CircularSliderHandleType {
   bigCircle
 }
 
+@objc(CircularSlider)
+@objcMembers
 public class CircularSlider: UIControl {
 
   // MARK: Values
