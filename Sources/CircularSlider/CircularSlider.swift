@@ -9,7 +9,7 @@ import UIKit
 import QuartzCore
 import Foundation
 
-public enum CircularSliderHandleType {
+@objc public enum CircularSliderHandleType: Int {
   case semiTransparentWhiteSmallCircle,
   semiTransparentWhiteCircle,
   semiTransparentBlackCircle,
@@ -216,7 +216,7 @@ public class CircularSlider: UIControl {
   }
   
   // MARK: - Initialization
-  override init(frame: CGRect) {
+  public override init(frame: CGRect) {
     super.init(frame: frame)
     backgroundColor = .clear
   }
