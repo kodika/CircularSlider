@@ -202,7 +202,7 @@ public class CircularSlider: UIControl {
     case .semiTransparentBlackCircle:
       newHandleColor = UIColor(white: 0.0, alpha: 0.7)
     case .bigCircle:
-      newHandleColor = filledColor
+      newHandleColor = handleColor
     }
     
     return newHandleColor
